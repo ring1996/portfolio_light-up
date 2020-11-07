@@ -1,0 +1,114 @@
+//////////////////////////////////////////////////
+// Settings
+//
+
+// fonts
+$font-jp: "Noto Sans JP", YuGothic,'Yu Gothic','ヒラギノ角ゴシック','Hiragino Sans',sans-serif;
+
+// colors
+$color-ttl: #111;
+$color-txt: #444;
+$color-main: #ECA359;
+$color-sub: #FADC00;
+$color-bg: #FCF2E7;
+
+// breakpoints
+$breakpoints: (
+  's': '375px', // sに切り替え
+	'm': '768px', // mに切り替え
+	'l': '1024px', // lに切り替え
+	'l-2': '1025px', // ipadpro用
+	'xl': '1440px', // xlに切り替え
+) !default;
+
+@mixin media($type, $bp1, $bp2:0) {
+	@if ($type == min) {
+		@media screen and (min-width: #{map-get($breakpoints, $bp1)}) {
+			@content;
+		}
+	} @else if ($type == max) {
+		@media screen and (max-width: #{map-get($breakpoints, $bp1)}) {
+			@content;
+		}
+	} @else if ($type == between) {
+		@media screen and (min-width: #{map-get($breakpoints, $bp1)}) and (max-width: #{map-get($breakpoints, $bp2)}) {
+			@content;
+		}
+	}
+}
+
+// form
+@mixin form-text {
+	-moz-appearance: none;
+  -webkit-appearance: none;
+  appearance: none;
+  background-image: none;
+  border: 1px solid #f0f0f0;
+  border-radius: 0;
+  color: inherit;
+  font-family: inherit;
+  font-size: 1em;
+  padding: 0.4em 0.8em;
+	width: 100%;
+	&:focus {
+		border: 1px solid #cacaca;
+		background-color: #fff;
+		box-shadow: none;
+		outline: none;
+	}
+}
+
+@mixin form-textarea {
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  appearance: none;
+	background-image: none;
+  border-radius: 0;
+  color: inherit;
+  font-family: inherit;
+  font-size: 1em;
+  height: 100px;
+  padding: 0.4em 0.8em;
+	width: 100%;
+	resize: none;
+	&:focus {
+		box-shadow: none;
+		outline: none;
+	}
+}
+
+@mixin form-select {
+  -moz-appearance: none;
+  -webkit-appearance: none;
+	appearance: none;
+	background-image: none;
+  border-radius: 0;
+  color: inherit;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 1em;
+  padding: 0.65em 0.8em;
+	width: 100%;
+	&::-ms-expand {
+		display: none;
+	}
+	&:focus {
+		box-shadow: none;
+		outline: none;
+	}
+}
+
+	@mixin form-button {
+		-webkit-appearance: none;
+		background-image: none;
+		border: none;
+		cursor: pointer;
+		text-decoration: none;
+		&:hover,
+		&:focus {
+			outline: none;
+		}
+		&::-moz-focus-inner {
+			border: none;
+		}
+	}
